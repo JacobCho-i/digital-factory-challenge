@@ -1,0 +1,29 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    background: rgb(5, 25, 68);
+    align-items: center;
+    padding: 10px 40px;
+    color: rgb(255, 255, 255);
+    border-bottom: 2px solid #f2f2f2;
+}
+
+.brand {
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.brand a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}

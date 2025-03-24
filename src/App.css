@@ -1,0 +1,19 @@
+.mainboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 5%;
+}
+
+.tasks {
+  font-size: 1.5em;
+  font-weight: bold;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 1000px;
+  border: 3px solid #000000;
+}
+
