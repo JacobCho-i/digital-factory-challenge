@@ -17,3 +17,9 @@
   border: 3px solid #000000;
 }
 
+.not-logged-in {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 25%;
+}
