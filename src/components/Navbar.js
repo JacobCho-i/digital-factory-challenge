@@ -11,7 +11,7 @@ const Navbar = ({ logout }) => {
     // load current href and current user if logged in
     const currentHref = window.location.href;
     setHref(currentHref);
-    
+
     setUser(localStorage.getItem('user'));
   }, []);
 
@@ -34,21 +34,21 @@ const Navbar = ({ logout }) => {
         <div className="buttons">
           {href === "http://localhost:3000/" ?
             <>
-              {user !== "null" ? 
-              <>
-              hi {user}
+              {user !== "null" ?
+                <>
+                  hi {user}
 
-              <Button variant="contained" onClick={signOut}>Sign OUT</Button>
-              </>
-              :
-              <>
-              <Link to='/sign-up'>
-                <Button variant="outlined">Sign up</Button>
-              </Link>
-              <Link to='/log-in'>
-                <Button variant="contained">Log in</Button>
-              </Link>
-            </>
+                  <Button variant="contained" onClick={signOut}>Sign OUT</Button>
+                </>
+                :
+                <>
+                  <Link to='/sign-up'>
+                    <Button variant="outlined">Sign up</Button>
+                  </Link>
+                  <Link to='/log-in'>
+                    <Button variant="contained">Log in</Button>
+                  </Link>
+                </>
               }
             </>
             :
