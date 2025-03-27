@@ -23,3 +23,47 @@
   align-items: center;
   padding-top: 25%;
 }
+
+body {
+  background: radial-gradient(circle at 30% 40%, #e0f7fa, #b2ebf2);
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: 'Poppins', sans-serif;
+}
+
+.app-background {
+  min-height: calc(100vh - 67px);
+  display: flex;
+  flex-direction: column;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+.content {
+  flex: 1 0 auto;
+}
+
+.bottom-spacing {
+  height: 60px; 
+}
+
+.custom-item {
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #292985, #131f6e);
+  border: none;
+  color: white;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .list-group {
+    width: 30%;
+  }
+}

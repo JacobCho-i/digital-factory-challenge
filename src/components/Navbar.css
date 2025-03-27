@@ -1,11 +1,25 @@
 .navbar {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     background: rgb(5, 25, 68);
     align-items: center;
     padding: 10px 40px;
     color: rgb(255, 255, 255);
-    border-bottom: 2px solid #f2f2f2;
+}
+
+@media (min-width: 768px) {
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        background: rgb(5, 25, 68);
+        align-items: center;
+        padding: 10px 40px;
+        color: rgb(255, 255, 255);
+    }
+}
+
+.hide-on-mobile {
+    display: none;
 }
 
 .brand {
@@ -26,4 +40,63 @@
     display: flex;
     align-items: center;
     gap: 20px;
+}
+
+.hamburgerButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.hamburger {
+    width: 24px;
+    height: 24px;
+}
+
+.hide-on-desk {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.log-in-mobile {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+@media (min-width: 768px) {
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        background: rgb(5, 25, 68);
+        align-items: center;
+        padding: 10px 40px;
+        color: rgb(255, 255, 255);
+        max-height: 68px;
+    }
+
+    .hamburgerButton {
+        display: none;
+    }
+    
+    .hamburger {
+        display: none;
+    }
+
+    .hide-on-mobile {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .hide-on-desk {
+        display: none;
+    }
+
+    .log-in-mobile {
+        display: none;
+    }
 }

@@ -28,11 +28,11 @@ mongoose.connect(process.env.REACT_APP_MONGO_URI, {
 // POST /api/register
 app.post('/api/register', async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { username, email, password } = req.body;
     const exists = await User.findOne({ email });
     if (exists) return res.status(400).json({ msg: 'User already exists' });
 
-    const newUser = new User({ email, password });
+    const newUser = new User({ username, email, password });
     await newUser.save();
 
     const token = jwt.sign({ userId: newUser._id }, process.env.REACT_APP_JWT_SECRET, {
@@ -69,7 +69,7 @@ app.post('/api/login', async (req, res) => {
       expiresIn: '1h'
     });
 
-    res.json({ token, user: { id: user._id, email: user.email } });
+    res.json({ token, user: { username: user.username, id: user._id, email: user.email } });
   } catch (err) {
     console.error(err);
     res.status(500).json({ msg: 'Server error' });

@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 const SignupPage = () => {
   const navigate = useNavigate();
 
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -23,6 +24,7 @@ const SignupPage = () => {
       try {
         //sending api to node.js backend
         const res = await axios.post('http://localhost:5000/api/register', {
+          username: username,
           email: email,
           password: password
         });
@@ -30,7 +32,7 @@ const SignupPage = () => {
 
         // store JWT token and email
         localStorage.setItem('token', data.token);
-        localStorage.setItem('user', data.user.email);
+        localStorage.setItem('user', data.user.username);
         console.log('Logged in as:', data.user);
         navigate('/');
       } catch (err) {
@@ -56,6 +58,16 @@ const SignupPage = () => {
                   <h3 className="text-center mb-4">Sign up</h3>
                   {error && <Alert variant="danger">{error}</Alert>}
                   <Form onSubmit={handleLogin}>
+                    <Form.Group className="mb-3" controlId="formBasicUsername">
+                      <Form.Label>Username</Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Enter Username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                      />
+                    </Form.Group>
+
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                       <Form.Label>Email address</Form.Label>
                       <Form.Control

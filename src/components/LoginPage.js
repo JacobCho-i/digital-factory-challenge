@@ -29,8 +29,9 @@ const LoginPage = () => {
         const data = await res.data;
 
         // store JWT token and email
+        console.log(data)
         localStorage.setItem('token', data.token);
-        localStorage.setItem('user', data.user.email);
+        localStorage.setItem('user', data.user.username);
         console.log('Logged in as:', data.user);
         navigate('/');
       } catch (err) {
