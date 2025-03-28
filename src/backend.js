@@ -2,11 +2,7 @@ const cors = require('cors');
 const express = require('express');
 const mongoose = require('mongoose');
 const auth = require('./middleware/auth');
-const dotenv = require('dotenv');
 const jwt = require('jsonwebtoken');
-
-const path = require('path');
-dotenv.config({ path: path.resolve(__dirname, '../.env') });
 const app = express();
 
 app.use(cors({
@@ -16,11 +12,14 @@ app.use(cors({
 
 app.use(express.json());
 
+// loading data schema
 const User = require('./models/User');
 const UserData = require('./models/UserData');
 
+// loading environment variables
 const { JWT_SECRET, PORT, MONGO_URI } = require('./config');
 
+// connecting mongo DB
 mongoose.connect(MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
@@ -29,15 +28,27 @@ mongoose.connect(MONGO_URI, {
   .catch(err => console.error('DB connection error:', err));
 
 // POST /api/register
+// Registering user with username, email, and password
 app.post('/api/register', async (req, res) => {
   try {
-    const { username, email, password } = req.body;
-    const exists = await User.findOne({ email });
-    if (exists) return res.status(400).json({ msg: 'User already exists' });
 
+    // server-side validations
+    const { username, email, password } = req.body;
+    if ( !username || !email || !password ) return res.status(400).json({ msg: 'one of the value is missing!' });
+
+    const validator = require('validator');
+    if (!validator.isEmail(req.body.email)) {
+      return res.status(400).json({ error: 'Invalid email format' });
+    }
+
+    const exists = await User.findOne({ email });
+    if (exists) return res.status(400).json({ msg: 'User already exists!' });
+
+    // enter user-info
     const newUser = new User({ username, email, password });
     await newUser.save();
 
+    // sign in automatically on succession
     const token = jwt.sign({ userId: newUser._id }, JWT_SECRET, {
       expiresIn: '1h'
     });
@@ -58,9 +69,11 @@ app.post('/api/register', async (req, res) => {
 });
 
 // POST /api/login
+// Given log in credentials (email, password), validate it and return JWT token otherwise return error
 app.post('/api/login', async (req, res) => {
   try {
     const { email, password } = req.body;
+    if (!email || !password ) return res.status(400).json({ msg: 'one of the value is missing!' });
 
     const user = await User.findOne({ email }).select('+password');
     if (!user) return res.status(401).json({ msg: 'Invalid email or password' });

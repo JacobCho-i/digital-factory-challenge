@@ -35,7 +35,7 @@ const LoginPage = () => {
         console.log('Logged in as:', data.user);
         navigate('/');
       } catch (err) {
-        console.error('Register failed:', err.response?.data || err.message);
+        window.alert(`Login failed: ${err.response?.data.msg}`);
       }
     }
   };

@@ -13,12 +13,14 @@ const SignupPage = () => {
   const [error, setError] = useState('');
 
   // handles user sign up
-  const handleLogin = async (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
 
     // making sure both email and password field are filled
     if (!email || !password) {
       setError('Please fill in all fields.');
+    } else if (!passwordCheck(password)) {
+      setError('Have password length at least 5 characters and include number.');
     } else {
 
       try {
@@ -36,10 +38,17 @@ const SignupPage = () => {
         console.log('Logged in as:', data.user);
         navigate('/');
       } catch (err) {
-        console.error('Register failed:', err.response?.data || err.message);
+        window.alert(`Register failed: ${err.response?.data.msg}`);
       }
     }
   };
+
+  const passwordCheck = () => {
+    const hasMinimumLength = password.length >= 5;
+    const hasNumber = /\d/.test(password);
+  
+    return hasMinimumLength && hasNumber;
+  }
 
   return (
     <>
@@ -57,7 +66,7 @@ const SignupPage = () => {
                 <Card.Body>
                   <h3 className="text-center mb-4">Sign up</h3>
                   {error && <Alert variant="danger">{error}</Alert>}
-                  <Form onSubmit={handleLogin}>
+                  <Form onSubmit={handleSignup}>
                     <Form.Group className="mb-3" controlId="formBasicUsername">
                       <Form.Label>Username</Form.Label>
                       <Form.Control

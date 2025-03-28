@@ -1,10 +1,43 @@
-TODOS:
-- error handling
-- unit test
-- deployment
-- validation
-- change state management
-- more documentations
+
+## Instruction:
+
+1. First install node module using 
+
+```
+npm install
+```
+ 
+2. Install mongoDB from official website: https://www.mongodb.com/try/download/community-kubernetes-operator
+
+3. create .env file in the root directory and copy paste these variables
+
+```
+PORT=3000
+BACKEND_PORT=5000
+MONGO_URI=mongodb://127.0.0.1:27017/todolist
+JWT_SECRET=DMXSdlv9wHHiV+bBPAb5KA==
+```
+
+4. run mongoDB using command
+
+```
+mongod
+```
+
+(Might need to set up PATH environment variable if mongod is not recognized in terminal)
+
+5. create another terminal, run the node backend using
+
+```
+cd src
+node backend.js
+```
+
+6. create another terminal, run the react server
+
+```
+npm start
+```
 
 ## Components:
 
@@ -42,6 +75,10 @@ Todo list size and navigation bar change depending on phone or desktop use
 
 User must be authorized (logged-in) to create, edit, and delete tasks, and user can only view their tasks
 
+### Validation
+
+Includes both client-side and server-side validation for authentication to make sure all fields are passed, have correct format, and check for duplicate users
+
 ## Backend API:
 
    - POST /api/register
@@ -51,4 +88,10 @@ User must be authorized (logged-in) to create, edit, and delete tasks, and user 
    - PUT /api/tasks/:id
    - DELETE /api/tasks/:id
 
+## Testing
 
+After installing all dependencies, you can test backend api with
+
+```
+npm test
+```
