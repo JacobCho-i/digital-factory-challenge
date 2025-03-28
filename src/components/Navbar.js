@@ -52,7 +52,7 @@ const Navbar = ({ logout }) => {
           <Link to='/'>
             My To-do list
           </Link>
-          {href === "https://digital-factory-challenge.vercel.app/" ?
+          {href === "http://localhost:3000/" ?
             <button className="hamburgerButton" onClick={() => setOpen(!open)}>
               <svg
                 className="hamburger"
@@ -74,7 +74,7 @@ const Navbar = ({ logout }) => {
           }
         </div>
         <div className="buttons">
-          {href === "https://digital-factory-challenge.vercel.app/" ?
+        {href === "http://localhost:3000/" ?
             <>
               {user !== "null" ? (
                 <>

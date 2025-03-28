@@ -30,7 +30,7 @@ function TaskForm() {
                     setUser("null");
                     return;
                 }
-                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/task`, {
+                const response = await axios.get('http://localhost:5000/api/task', {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
@@ -72,7 +72,7 @@ function TaskForm() {
         try {
             const token = localStorage.getItem('token');
             const response = await axios.post(
-                `${process.env.REACT_APP_API_URL}/api/task`,
+                'http://localhost:5000/api/task',
                 {
                     content: inputValue
                 },
@@ -102,7 +102,7 @@ function TaskForm() {
         try {
             const token = localStorage.getItem('token');
             const response = await axios.delete(
-                `${process.env.REACT_APP_API_URL}/api/task/${id}`,
+                `http://localhost:5000/api/task/${id}`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -127,7 +127,7 @@ function TaskForm() {
         try {
             const token = localStorage.getItem('token');
             const response = await axios.put(
-                `${process.env.REACT_APP_API_URL}/api/task/${id}`,
+                `http://localhost:5000/api/task/${id}`,
                 {
                     content: content
                 },
