@@ -1,15 +1,17 @@
 
-## Instruction:
+## Instruction (Running locally):
 
-1. First install node module using 
+1. Switch to running_locally branch
+
+2. Install node module using 
 
 ```
 npm install
 ```
  
-2. Install mongoDB from official website: https://www.mongodb.com/try/download/community-kubernetes-operator
+3. Install mongoDB from official website: https://www.mongodb.com/try/download/community-kubernetes-operator
 
-3. create .env file in the root directory and copy paste these variables
+4. create .env file in the root directory and copy paste these variables
 
 ```
 PORT=3000
@@ -18,7 +20,7 @@ MONGO_URI=mongodb://127.0.0.1:27017/todolist
 JWT_SECRET=DMXSdlv9wHHiV+bBPAb5KA==
 ```
 
-4. run mongoDB using command
+5. run mongoDB using command
 
 ```
 mongod
@@ -26,14 +28,14 @@ mongod
 
 (Might need to set up PATH environment variable if mongod is not recognized in terminal)
 
-5. create another terminal, run the node backend using
+6. create another terminal, run the node backend using
 
 ```
 cd src
 node backend.js
 ```
 
-6. create another terminal, run the react server
+7. create another terminal, run the react server
 
 ```
 npm start
