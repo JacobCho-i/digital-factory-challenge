@@ -24,6 +24,12 @@ function TaskForm() {
                 const token = localStorage.getItem('token');
                 console.log('using token', token)
 
+                if (isTokenExpired(token)) {
+                    console.log('token expired');
+                    SetUser("null");
+                    return;
+                }
+
                 const response = await axios.get('http://localhost:5000/api/task', {
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -44,9 +50,19 @@ function TaskForm() {
         console.log(user);
     }, []);
 
+    const isTokenExpired = (token) => {
+        if (!token) return true;
 
+        const payloadBase64 = token.split('.')[1];
+        const payloadJson = atob(payloadBase64);
+        const payload = JSON.parse(payloadJson);
 
-    const add_task = async () => {
+        const currentTime = Math.floor(Date.now() / 1000); // in seconds
+
+        return payload.exp < currentTime;
+    }
+
+    const addTask = async () => {
         if (inputValue === "") {
             return;
         }
@@ -152,7 +168,7 @@ function TaskForm() {
                                     onChange={handleChange}
                                     placeholder="Type task..."
                                 />
-                                <Button onClick={() => add_task("ball guy")}>add</Button>
+                                <Button onClick={() => addTask("ball guy")}>add</Button>
                             </div>
                             <ListGroup class="tasks" style={{ paddingTop: '20px' }}>
                                 {todos.map((task) => (

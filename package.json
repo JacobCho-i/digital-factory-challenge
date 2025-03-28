@@ -30,7 +30,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "mocha \"test/**/*.test.js\"",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -50,5 +50,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "chai": "^5.2.0",
+    "chai-http": "^4.3.0",
+    "mocha": "^11.1.0",
+    "supertest": "^7.1.0"
   }
 }

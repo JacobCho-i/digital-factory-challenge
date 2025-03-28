@@ -1,11 +1,10 @@
 TODOS:
-- fix .env issue
 - error handling
-- data protection
 - unit test
 - deployment
 - validation
 - change state management
+- more documentations
 
 ## Components:
 
@@ -38,6 +37,10 @@ Logged in users can view, create, edit, and delete their tasks
 ### Responsive view
 
 Todo list size and navigation bar change depending on phone or desktop use
+
+### Data protection
+
+User must be authorized (logged-in) to create, edit, and delete tasks, and user can only view their tasks
 
 ## Backend API:
 

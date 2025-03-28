@@ -1,12 +1,12 @@
 const jwt = require('jsonwebtoken');
-const secret = "DMXSdlv9wHHiV+bBPAb5KA==";
+const { JWT_SECRET } = require('../config');
 
 function auth(req, res, next) {
   const token = req.headers.authorization?.split(' ')[1];
   if (!token) return res.status(401).send('No token');
 
   try {
-    const decoded = jwt.verify(token, secret);
+    const decoded = jwt.verify(token, JWT_SECRET);
     req.user = decoded; 
     next();
   } catch (err) {

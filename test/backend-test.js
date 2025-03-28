@@ -1,7 +1,7 @@
 const cors = require('cors');
 const express = require('express');
 const mongoose = require('mongoose');
-const auth = require('./middleware/auth');
+const auth = require('../src/middleware/auth');
 const dotenv = require('dotenv');
 const jwt = require('jsonwebtoken');
 
@@ -16,10 +16,10 @@ app.use(cors({
 
 app.use(express.json());
 
-const User = require('./models/User');
-const UserData = require('./models/UserData');
+const User = require('../src/models/User');
+const UserData = require('../src/models/UserData');
 
-const { JWT_SECRET, PORT, MONGO_URI } = require('./config');
+const { JWT_SECRET, PORT, MONGO_URI } = require('../src/config');
 
 mongoose.connect(MONGO_URI, {
   useNewUrlParser: true,
@@ -123,6 +123,4 @@ app.delete('/api/task/:id', auth, async (req, res) => {
   res.json({ message: 'task deleted' });
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running at port ${PORT}`);
-});
+module.exports = app;
