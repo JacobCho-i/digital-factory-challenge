@@ -25,7 +25,7 @@ const SignupPage = () => {
 
       try {
         //sending api to node.js backend
-        const res = await axios.post('http://localhost:5000/api/register', {
+        const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/register`, {
           username: username,
           email: email,
           password: password

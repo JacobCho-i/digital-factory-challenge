@@ -52,7 +52,7 @@ const Navbar = ({ logout }) => {
           <Link to='/'>
             My To-do list
           </Link>
-          {href === "http://localhost:3000/" ?
+          {href === "https://your-frontend.vercel.app/" ?
             <button className="hamburgerButton" onClick={() => setOpen(!open)}>
               <svg
                 className="hamburger"
@@ -74,7 +74,7 @@ const Navbar = ({ logout }) => {
           }
         </div>
         <div className="buttons">
-          {href === "http://localhost:3000/" ?
+          {href === "https://your-frontend.vercel.app/" ?
             <>
               {user !== "null" ? (
                 <>
