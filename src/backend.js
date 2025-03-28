@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 const app = express();
 
 app.use(cors({
-  origin: 'https://your-frontend.vercel.app',
+  origin: 'https://digital-factory-challenge.vercel.app',
   credentials: true
 }));
 
